@@ -50,7 +50,7 @@ const logingUsuario = async (req, res) => {
     const token = await generarJWT(usuario.id, usuario.name);
 
     res
-      .status(400)
+      .status(200)
       .json({ ok: true, uid: usuario.id, name: usuario.name, token });
   } catch (error) {
     console.log(error);
@@ -60,7 +60,7 @@ const logingUsuario = async (req, res) => {
 const revalidarToken = async (req, res) => {
   const { uid, name } = req;
   const token = await generarJWT(uid, name);
-  res.json({ ok: true, msg: "revalidacionToken", token });
+  res.json({ ok: true, msg: "revalidacionToken", token, uid, name });
 };
 
 module.exports = {
