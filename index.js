@@ -20,6 +20,10 @@ app.use(express.json());
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/event", require("./routes/events"));
 
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 //escuchar peticiones
 app.listen(process.env.PORT, () => {
   console.log(`Servidor en puerto ${process.env.PORT}`);
